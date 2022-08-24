@@ -4,6 +4,7 @@ package gcd
 
 import chisel3._
 import chisel3.util.Decoupled
+import chisel3.stage.ChiselStage
 
 class GcdInputBundle(val w: Int) extends Bundle {
   val value1 = UInt(w.W)
@@ -83,4 +84,8 @@ class DecoupledGcd(width: Int) extends Module {
       busy := true.B
     }
   }
+}
+
+object DecoupledGcdDriver extends App {
+  (new ChiselStage).emitVerilog(new DecoupledGcd(32), args)
 }
