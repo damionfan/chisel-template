@@ -40,7 +40,7 @@ class DecoupledGcd(width: Int) extends Module {
   val input = IO(Flipped(Decoupled(new GcdInputBundle(width))))
   val output = IO(Decoupled(new GcdOutputBundle(width)))
 
-  val xInitial    = Reg(UInt()) //保持状态
+  val xInitial    = Reg(UInt()) //保持状态寄存器
   val yInitial    = Reg(UInt())
   val x           = Reg(UInt())
   val y           = Reg(UInt())

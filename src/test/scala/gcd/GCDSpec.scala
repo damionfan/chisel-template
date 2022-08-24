@@ -26,6 +26,8 @@ class GCDSpec extends AnyFreeSpec with ChiselScalatestTester {
       dut.input.setSourceClock(dut.clock)
       dut.output.initSink()
       dut.output.setSinkClock(dut.clock)
+      // 注意，这里需要一些样板如initSource，setSourceClock等，
+      // 以此来确保ready和valid字段都在测试开始时正确初始化了。
 
       val testValues = for { x <- 0 to 10; y <- 0 to 10} yield (x, y)
       val inputSeq = testValues.map { case (x, y) => (new GcdInputBundle(16)).Lit(_.value1 -> x.U, _.value2 -> y.U) }
