@@ -128,9 +128,9 @@ circuit NValuesAdder :
     res2.input.bits.op1 <= inputs.bits.ops[1].op1 @[addmul.scala 60:29]
     res2.input.bits.op2 <= inputs.bits.ops[1].op2 @[addmul.scala 61:29]
     res2.output.ready <= flag_1 @[addmul.scala 63:27]
-    wire result : { op1 : UInt<32>, op2 : UInt<32>} @[addmul.scala 84:20]
-    result.op1 <= res1.output.bits.res @[addmul.scala 86:14]
-    result.op2 <= res2.output.bits.res @[addmul.scala 87:14]
+    wire result : { op1 : UInt<32>, op2 : UInt<32>} @[addmul.scala 87:20]
+    result.op1 <= res1.output.bits.res @[addmul.scala 89:14]
+    result.op2 <= res2.output.bits.res @[addmul.scala 90:14]
     inst res3 of DecoupledAdder_2 @[addmul.scala 54:26]
     res3.clock <= clock
     res3.reset <= reset
@@ -141,5 +141,5 @@ circuit NValuesAdder :
     res3.input.bits.op1 <= result.op1 @[addmul.scala 60:29]
     res3.input.bits.op2 <= result.op2 @[addmul.scala 61:29]
     res3.output.ready <= flag_2 @[addmul.scala 63:27]
-    outputs <= res3.output.bits.res @[addmul.scala 93:11]
+    outputs <= res3.output.bits.res @[addmul.scala 96:11]
 

@@ -78,14 +78,15 @@ class NValuesAdder(n: Int, width: Int) extends Module{
 //   inputs.valid := false.B 
 //   output.ready := flag 
 
-  //val res1 = Vec(n, new DecoupledAdder(width))
-    val res1= (0 until n).map( i => new DecoupledAdder(width))
+//   val res1 = Vec.fill(n) {Module(new DecoupledAdder(width)).io}
+//   val res1= (0 until n).map(id => new DecoupledAdder(width))
+  val res1= DecoupledAdder(inputs.bits.ops(0), width)
 
   val res2 = DecoupledAdder(inputs.bits.ops(1), width)
  
   val result = Wire(new AddInputBudle(width))
 
-  result.op1 := res1(0).output.bits.res
+  result.op1 := res1.output.bits.res
   result.op2 := res2.output.bits.res
 
   val res3 = DecoupledAdder(result, width)

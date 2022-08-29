@@ -125,7 +125,7 @@ module NValuesAdder(
     .output_bits_res(res3_output_bits_res)
   );
   assign inputs_ready = 1'h1; // @[addmul.scala 77:16]
-  assign outputs = res3_output_bits_res; // @[addmul.scala 93:11]
+  assign outputs = res3_output_bits_res; // @[addmul.scala 96:11]
   assign res1_clock = clock;
   assign res1_reset = reset;
   assign res1_input_bits_op1 = inputs_bits_ops_0_op1; // @[addmul.scala 60:29]
@@ -136,6 +136,6 @@ module NValuesAdder(
   assign res2_input_bits_op2 = inputs_bits_ops_1_op2; // @[addmul.scala 61:29]
   assign res3_clock = clock;
   assign res3_reset = reset;
-  assign res3_input_bits_op1 = res1_output_bits_res; // @[addmul.scala 84:20 86:14]
-  assign res3_input_bits_op2 = res2_output_bits_res; // @[addmul.scala 84:20 87:14]
+  assign res3_input_bits_op1 = res1_output_bits_res; // @[addmul.scala 87:20 89:14]
+  assign res3_input_bits_op2 = res2_output_bits_res; // @[addmul.scala 87:20 90:14]
 endmodule
