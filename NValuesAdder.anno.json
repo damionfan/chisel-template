@@ -1,0 +1,28 @@
+[
+  {
+    "class":"firrtl.transforms.DedupedResult",
+    "original":"~NValuesAdder|DecoupledAdder",
+    "duplicate":"~NValuesAdder|NValuesAdder/res1:DecoupledAdder",
+    "index":0.0
+  },
+  {
+    "class":"firrtl.transforms.DedupedResult",
+    "original":"~NValuesAdder|DecoupledAdder_1",
+    "duplicate":"~NValuesAdder|NValuesAdder/res2:DecoupledAdder",
+    "index":0.3333333333333333
+  },
+  {
+    "class":"firrtl.transforms.DedupedResult",
+    "original":"~NValuesAdder|DecoupledAdder_2",
+    "duplicate":"~NValuesAdder|NValuesAdder/res3:DecoupledAdder",
+    "index":0.6666666666666666
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.VerilogEmitter"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"."
+  }
+]

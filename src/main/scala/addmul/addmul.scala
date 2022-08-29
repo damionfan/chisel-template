@@ -15,7 +15,6 @@ class AddOutputBudle(val w: Int) extends Bundle{
     val res = UInt(w.W)
 }
 
-
 class DecoupledAdder(width: Int) extends Module{
     val input = IO(Flipped(Decoupled(new AddInputBudle(width))))
     val output = IO(Decoupled(new AddOutputBudle(width)))
@@ -62,7 +61,8 @@ object DecoupledAdder{
         inst.input.bits.op2 := ops.op2
 
         inst.output.ready := flag 
-        inst.output.bits.res
+        // inst.output.bits.res
+        inst
     }
 }
 
@@ -74,10 +74,25 @@ class NValuesAdder(n: Int, width: Int) extends Module{
   val inputs = IO(Flipped(Decoupled(new MultiValueInputs(n, width))))
   val outputs = IO(Output(UInt(width.W)))
 
-  val res1 = DecoupledAdder(inputs.bits.ops(0), width)
-  val res2 = DecoupledAdder(inputs.bits.ops(1), width)
+  inputs.ready := true.B
+//   inputs.valid := false.B 
+//   output.ready := flag 
 
-  outputs := res1 + res2
+  //val res1 = Vec(n, new DecoupledAdder(width))
+    val res1= (0 until n).map( i => new DecoupledAdder(width))
+
+  val res2 = DecoupledAdder(inputs.bits.ops(1), width)
+ 
+  val result = Wire(new AddInputBudle(width))
+
+  result.op1 := res1(0).output.bits.res
+  result.op2 := res2.output.bits.res
+
+  val res3 = DecoupledAdder(result, width)
+
+  //val res3 = DecoupledAdder(res1.output.bits.res, res2.output.bits.res)
+
+  outputs := res3.output.bits.res
 }
 
 

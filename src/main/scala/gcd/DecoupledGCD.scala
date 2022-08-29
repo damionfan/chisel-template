@@ -28,6 +28,9 @@ class GcdOutputBundle(val w: Int) extends Bundle {
   //Decoupled 即为接口包装一层valid 和 ready ，
   //decoupled 默认方向为输出，如果需要输入，可以加.flip, Decoupled 可以直接调用Bundle或者Bits，Bundle 内的端口也应该用bits定义
 
+  //bits   o
+  //ready  i
+  //valid  o
   //ready指的是：接收方是否满足接受状态
   //valid指的是：发送方是否满足发送状态，即数据准备好了。
   //bits指的是：IO Line 的电路位数。
